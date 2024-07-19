@@ -38,6 +38,28 @@ export default {
         "90v": "90dvw",
         "100v": "100dvw",
       },
+      animation: {
+        fade: 'fadeIn .5s ease-in-out',
+        blink: 'blink 1s infinite both',
+      },
+
+      keyframes: {
+        fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        blink: {
+          '0%': {
+            opacity: '0.2',
+          },
+          '20%': {
+            opacity: '1',
+          },
+          '100%': {
+            opacity: '0.2',
+          },
+        },
+      },
     },
   },
   plugins: [],
