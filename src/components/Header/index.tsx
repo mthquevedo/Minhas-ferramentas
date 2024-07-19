@@ -28,11 +28,11 @@ export function Header() {
     const currentGreeting = greeting(hour);
 
     return (
-        <header className="flex justify-between text-sm">
+        <header className="flex justify-between text-sm text-neutral-800 pb-3">
             <p><span className="font-medium">{currentGreeting}</span>, {formattedDate}</p>
-            <p className="border border-neutral-600 rounded-sm py-1 px-2">
+            <p className="border border-neutral-600 rounded-sm py-1 px-2 text-center">
                 {hour}
-                <span className="animate-blink">:</span>
+                <span className="animate-blink font-medium">:</span>
                 {minutes < 10 ? `0${minutes}` : minutes}
             </p>
         </header>
