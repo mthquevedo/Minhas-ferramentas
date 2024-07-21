@@ -30,7 +30,7 @@ export function Header() {
     return (
         <header className="flex justify-between items-center text-sm text-neutral-800 pb-3">
             <p><span className="font-medium">{currentGreeting}</span>, {formattedDate}</p>
-            <p className="border border-neutral-600 rounded-sm py-1 px-2 text-center">
+            <p className="bg-zinc-200 border border-neutral-600 rounded-sm py-1 px-2 text-center">
                 {hour}
                 <span className="animate-blink font-medium">:</span>
                 {minutes < 10 ? `0${minutes}` : minutes}
