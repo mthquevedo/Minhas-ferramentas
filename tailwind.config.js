@@ -7,6 +7,12 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        sand: '#fff0d1',
+        darkblue: '#131723',
+        middleblue: '#1f6e8c',
+        lightblue: '#49aec0',
+      },
       fontFamily: {
         'poppins': ['Poppins', 'sans-serif'],
       },
