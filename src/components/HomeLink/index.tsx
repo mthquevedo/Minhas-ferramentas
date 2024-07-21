@@ -16,7 +16,7 @@ export function HomeLink({ icon, to, className, iconClassName, title, ...props }
             <p className="font-medium">{title}</p>
 
             <Link to={to}>
-                <button {...props} className={twMerge(" flex justify-center items-center w-24 h-24 rounded-lg shadow-lg transition-all duration-100	 hover:-translate-y-1", className)}>
+                <button {...props} className={twMerge("flex justify-center items-center w-24 h-24 rounded-lg shadow-lg transition-all duration-100 hover:-translate-y-1", className)}>
                     <p className={twMerge("text-4xl", iconClassName)}>{icon}</p>
                 </button>
             </Link>
