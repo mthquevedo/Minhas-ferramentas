@@ -8,7 +8,6 @@ export function MainLayout() {
             <Header />
 
             <h1 className="text-center font-bold text-neutral-800 text-5xl py-2">✌ Tech Tools</h1>
-            <p className="text-center">Navegue pelas ferramentas abaixo:</p>
 
             <Outlet />
 
