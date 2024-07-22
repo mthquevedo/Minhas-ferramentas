@@ -18,7 +18,7 @@ export function Counter() {
         <main className="flex-1">
             <ReturnHomeButton />
 
-            <div className="h-4/5 flex justify-center items-center gap-10">
+            <div className="h-4/5 flex justify-center items-center gap-16">
 
                 <div className="flex flex-col gap-6 pt-4">
                     <CounterButton icon={<RiArrowUpWideFill />} className="bg-green-500 hover:bg-green-400" onClick={increment} />
