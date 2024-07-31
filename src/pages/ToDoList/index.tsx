@@ -1,29 +1,45 @@
+import { useState } from "react";
 import { IoListSharp } from "react-icons/io5";
 import { ReturnHomeButton } from "../../components/ReturnHomeButton";
-import { useState } from "react";
+import { ToDoItem } from "../../components/ToDoItem";
+
 
 export function ToDoList() {
     const [tasks, setTasks] = useState([
         {
-            genre: "Study",
+            id: "1",
+            genre: "Estudo",
             content: "test"
         },
         {
-            genre: "Work",
+            id: "2",
+            genre: "Trabalho",
             content: "test2"
         }
-    ])
+    ]);
 
-    console.log(tasks);
+    function addTask() {
+        const task = {
+            id: 5,
+            genre: "Estudo",
+            content: "teste",
+        }
+
+        setTasks(state => [...state, task])
+    }
+
+    function deleteTask(id: string) {
+        setTasks(state => state.filter(item => item.id !== id))
+    }
 
     return (
         <div className="flex-1">
             <ReturnHomeButton />
 
-            <main className="h-5/6 bg-gray-400 flex justify-between items-start mt-6 shadow-lg rounded-lg mx-10">
+            <main className="h-5/6 bg-gray-400 flex justify-between items-start mt-7 shadow-lg rounded-lg mx-16">
 
                 <aside className="w-30v h-full bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 py-7 rounded-l-lg overflow-hidden">
-                    <form action="" className="flex flex-col justify-center gap-5">
+                    <form className="flex flex-col justify-center gap-5">
 
                         <div className="flex items-center gap-4 pb-4">
                             <span className="bg-orange-400 p-2 rounded-full"><IoListSharp /></span>
@@ -33,9 +49,9 @@ export function ToDoList() {
                         <div className="flex flex-col">
                             <label className="text-gray-50 text-sm pb-2">Selecione a categoria:</label>
                             <select name="" id="" className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
-                                <option value="Study" className="">Estudo</option>
-                                <option value="Work">Trabalho</option>
-                                <option value="Personal">Pessoal</option>
+                                <option value="Estudo" className="">Estudo</option>
+                                <option value="Trabalho">Trabalho</option>
+                                <option value="Pessoal">Pessoal</option>
                             </select>
                         </div>
 
@@ -51,12 +67,14 @@ export function ToDoList() {
                 </aside>
 
                 <div className="w-80v h-full px-8 py-7">
-                    <p>Tarefa</p>
+                    <p className="font-medium">Tarefas:</p>
                     {tasks.map(task => {
-                        return <p>{task.content}</p>
+                        return (
+                            <ToDoItem id={task.id} genre={task.genre} content={task.content} deleteAction={deleteTask} />
+                        );
                     })}
                 </div>
             </main>
         </div >
-    )
+    );
 }
