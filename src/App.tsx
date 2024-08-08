@@ -3,7 +3,7 @@ import { MainLayout } from "./layouts/MainLayout"
 import { Counter } from "./pages/Counter"
 import { Home } from "./pages/Home"
 import { QrCode } from "./pages/QrCode"
-import { ToDoList } from "./pages/ToDoList"
+import { ToDoList } from "./pages/ToDoList/"
 
 function App() {
 
