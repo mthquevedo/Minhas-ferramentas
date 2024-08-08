@@ -1,14 +1,14 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
-interface Task {
+interface TaskProps {
     id: string;
     genre: string;
     content: string;
 }
 
 interface TaskContextType {
-    tasks: Task[];
-    addTask: (task: Task) => void;
+    tasks: TaskProps[];
+    addTask: (task: TaskProps) => void;
 }
 
 interface TaskProviderProps {
@@ -23,7 +23,7 @@ const defaultValue: TaskContextType = {
 export const TaskContext = createContext<TaskContextType>(defaultValue);
 
 function TaskProvider({ children }: TaskProviderProps) {
-    const [tasks, setTasks] = useState<Task[]>([
+    const [tasks, setTasks] = useState<TaskProps[]>([
         {
             id: "1",
             genre: "Estudo",
@@ -36,17 +36,24 @@ function TaskProvider({ children }: TaskProviderProps) {
         }
     ]);
 
-    const addTask = (task: Task) => {
+    const addTask = (task: TaskProps) => {
         setTasks((prevTasks) => [...prevTasks, task]);
     };
-
-    console.log(tasks)
 
     return (
         <TaskContext.Provider value={{ tasks, addTask }}>
             {children}
         </TaskContext.Provider>
     )
+}
+
+export function useToDo() {
+    const context = useContext(TaskContext);
+    if (context === undefined) {
+        throw new Error("O useToDo precisa ser usado dentro de um TaskProvider")
+    }
+
+    return context;
 }
 
 export default TaskProvider;
