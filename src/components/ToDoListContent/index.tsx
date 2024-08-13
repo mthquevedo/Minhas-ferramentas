@@ -35,10 +35,6 @@ export function ToDoListContent() {
         (document.getElementById('taskContent') as HTMLInputElement).value = '';
     }
 
-    // function deleteTask(id: string) {
-    //     setTasks(state => state.filter(item => item.id !== id))
-    // }
-
     return (
         <div className="flex-1">
             <ReturnHomeButton />
