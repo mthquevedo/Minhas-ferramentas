@@ -9,7 +9,7 @@ export function ToDoListContent() {
     const handleCreateTask = (event: React.FormEvent) => {
         event.preventDefault();
 
-        const taskId = "3";
+        const taskId = "mq" + Math.random().toString(16).slice(2, 10);
         const formInputGenre = (document.getElementById('genderOptions') as HTMLSelectElement).value;
         const formTaskInput = (document.getElementById('taskContent') as HTMLInputElement).value.trim();
 
@@ -62,7 +62,7 @@ export function ToDoListContent() {
                                 name="genderOptions"
                                 id="genderOptions"
                                 className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
-                                <option value="Estudo" selected>Estudo</option>
+                                <option value="Estudo">Estudo</option>
                                 <option value="Trabalho">Trabalho</option>
                                 <option value="Pessoal">Pessoal</option>
                             </select>
