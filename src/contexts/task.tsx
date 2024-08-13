@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext, useState } from "react";
 
-interface TaskProps {
+export interface TaskProps {
     id: string;
     genre: string;
     content: string;
@@ -9,6 +9,7 @@ interface TaskProps {
 interface TaskContextType {
     tasks: TaskProps[];
     addTask: (task: TaskProps) => void;
+    deleteTask: (task: TaskProps) => void;
 }
 
 interface TaskProviderProps {
@@ -18,6 +19,7 @@ interface TaskProviderProps {
 const defaultValue: TaskContextType = {
     tasks: [],
     addTask: () => { },
+    deleteTask: () => { },
 };
 
 export const TaskContext = createContext<TaskContextType>(defaultValue);
@@ -40,8 +42,12 @@ function TaskProvider({ children }: TaskProviderProps) {
         setTasks((prevTasks) => [...prevTasks, task]);
     };
 
+    const deleteTask = ({ id }: TaskProps) => {
+        setTasks(state => state.filter(item => item.id !== id))
+    }
+
     return (
-        <TaskContext.Provider value={{ tasks, addTask }}>
+        <TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
             {children}
         </TaskContext.Provider>
     )
