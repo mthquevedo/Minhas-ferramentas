@@ -9,7 +9,7 @@ export interface TaskProps {
 interface TaskContextType {
     tasks: TaskProps[];
     addTask: (task: TaskProps) => void;
-    deleteTask: (task: TaskProps) => void;
+    deleteTask: (id: string) => void;
 }
 
 interface TaskProviderProps {
@@ -42,7 +42,7 @@ function TaskProvider({ children }: TaskProviderProps) {
         setTasks((prevTasks) => [...prevTasks, task]);
     };
 
-    const deleteTask = ({ id }: TaskProps) => {
+    const deleteTask = (id: string) => {
         setTasks(state => state.filter(item => item.id !== id))
     }
 
