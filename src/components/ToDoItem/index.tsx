@@ -8,11 +8,11 @@ export function ToDoItem({ id, genre, content }: TaskProps) {
 
     const genreColor = (genre: string) => {
         if (genre === "Estudo") {
-            return "bg-orange-300";
+            return "bg-orange-300 text-orange-950 border border-orange-950";
         } else if (genre === "Trabalho") {
-            return "bg-gray-300";
+            return "bg-indigo-300 text-indigo-950 border border-indigo-950";
         } else {
-            return "bg-lime-300";
+            return "bg-emerald-300 text-emerald-950 border border-emerald-950";
         }
     }
 
@@ -28,11 +28,14 @@ export function ToDoItem({ id, genre, content }: TaskProps) {
                 <p>{content}</p>
             </div>
 
-            <div className={twMerge("bg-orange-300 w-20 py-1 px-1 text-center font-medium text-xs text-orange-950 border border-orange-950 rounded-lg", genreColor(genre))}>
+            <div className={twMerge("w-20 py-1 px-1 text-center font-medium text-xs rounded-lg", genreColor(genre))}>
                 {genre}
             </div>
 
-            <button className="text-white" onClick={() => handleDeleteTask(id)}><GoTrash /></button>
+            <button className="group flex justify-center items-center" onClick={() => handleDeleteTask(id)}>
+                <GoTrash className="transition-all text-black group-hover:text-red-600 absolute" />
+                <span className="transition-all h-8 w-8 bg-white/20 group-hover:bg-white/80 rounded-full"></span>
+            </button>
         </div>
     )
 }
