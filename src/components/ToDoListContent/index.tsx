@@ -1,27 +1,39 @@
 import { IoListSharp } from "react-icons/io5";
+import { TaskProps, useToDo } from "../../contexts/task";
 import { ReturnHomeButton } from "../ReturnHomeButton";
 import { ToDoItem } from "../ToDoItem";
-import { useToDo } from "../../contexts/task";
 
 export function ToDoListContent() {
     const { tasks, addTask } = useToDo();
 
-    const handleAddTask = (event: React.FormEvent) => {
+    const handleCreateTask = (event: React.FormEvent) => {
         event.preventDefault();
-        addTask({ id: "3", genre: "Trabalho", content: "test3" });
+
+        const taskId = "3";
+        const formInputGenre = (document.getElementById('genderOptions') as HTMLSelectElement).value;
+        const formTaskInput = (document.getElementById('taskContent') as HTMLInputElement).value.trim();
+
+        if (!formTaskInput) {
+            alert("O conteúdo da tarefa não pode estar vazio!");
+            return
+        }
+
+        const formInputContent = formTaskInput;
+
+        AddTask({ id: taskId, genre: formInputGenre, content: formInputContent });
+    }
+
+    const AddTask = ({ id, genre, content }: TaskProps) => {
+        addTask({ id: id, genre: genre, content: content });
+        clearInputs()
     };
 
     console.log(tasks);
 
-    // function addTask() {
-    //     const task = {
-    //         id: 5,
-    //         genre: "Estudo",
-    //         content: "teste",
-    //     }
-
-    //     setTasks(state => [...state, task])
-    // }
+    const clearInputs = () => {
+        (document.getElementById('genderOptions') as HTMLSelectElement).selectedIndex = 0;
+        (document.getElementById('taskContent') as HTMLInputElement).value = '';
+    }
 
     // function deleteTask(id: string) {
     //     setTasks(state => state.filter(item => item.id !== id))
@@ -36,7 +48,7 @@ export function ToDoListContent() {
                 <aside className="w-30v h-full bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 py-7 rounded-l-lg overflow-hidden">
                     <form
                         className="flex flex-col justify-center gap-5"
-                        onSubmit={handleAddTask}
+                        onSubmit={handleCreateTask}
                     >
 
                         <div className="flex items-center gap-4 pb-4">
@@ -46,8 +58,11 @@ export function ToDoListContent() {
 
                         <div className="flex flex-col">
                             <label className="text-gray-50 text-sm pb-2">Selecione a categoria:</label>
-                            <select name="genderOptions" id="genderOptions" className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
-                                <option value="Estudo" className="">Estudo</option>
+                            <select
+                                name="genderOptions"
+                                id="genderOptions"
+                                className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
+                                <option value="Estudo" selected>Estudo</option>
                                 <option value="Trabalho">Trabalho</option>
                                 <option value="Pessoal">Pessoal</option>
                             </select>
@@ -57,6 +72,7 @@ export function ToDoListContent() {
                             <label className="text-gray-50 text-sm pb-2">Conteúdo:</label>
                             <input
                                 type="text"
+                                id="taskContent"
                                 placeholder="Descreva a tarefa"
                                 className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 focus:outline-none" />
                         </div>
@@ -75,8 +91,6 @@ export function ToDoListContent() {
                     <p className="font-medium">Tarefas:</p>
                     {tasks.map(task => {
                         return (
-                            // <ToDoItem id={task.id} genre={task.genre} content={task.content} deleteAction={deleteTask} />
-                            // <p>{task.content}</p>
                             <ToDoItem key={task.id} id={task.id} genre={task.genre} content={task.content} />
                         );
                     })}
