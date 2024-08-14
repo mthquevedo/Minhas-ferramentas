@@ -32,7 +32,7 @@ export function ToDoItem({ id, genre, content }: TaskProps) {
                 {genre}
             </div>
 
-            <button className="group flex justify-center items-center" onClick={() => handleDeleteTask(id)}>
+            <button className="group flex justify-center items-center relative" onClick={() => handleDeleteTask(id)}>
                 <GoTrash className="transition-all text-black group-hover:text-red-600 absolute" />
                 <span className="transition-all h-8 w-8 bg-white/20 group-hover:bg-white/80 rounded-full"></span>
             </button>
