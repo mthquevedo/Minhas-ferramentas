@@ -83,7 +83,7 @@ export function ToDoListContent() {
                     </form>
                 </aside>
 
-                <div className="w-80v h-full px-8 py-7">
+                <div className="w-80v h-full px-8 py-7 overflow-y-auto">
                     <p className="font-medium">Tarefas:</p>
                     {tasks.map(task => {
                         return (
