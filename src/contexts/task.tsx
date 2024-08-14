@@ -25,26 +25,26 @@ const defaultValue: TaskContextType = {
 export const TaskContext = createContext<TaskContextType>(defaultValue);
 
 function TaskProvider({ children }: TaskProviderProps) {
-    const [tasks, setTasks] = useState<TaskProps[]>([
-        {
-            id: "1",
-            genre: "Estudo",
-            content: "test"
-        },
-        {
-            id: "2",
-            genre: "Trabalho",
-            content: "test2"
-        }
-    ]);
+    const [tasks, setTasks] = useState<TaskProps[]>(() => {
+        const storageTasks = localStorage.getItem("tasks");
+        return storageTasks ? JSON.parse(storageTasks) : [];
+    });
 
     const addTask = (task: TaskProps) => {
-        setTasks((prevTasks) => [...prevTasks, task]);
+        setTasks((prevTasks) => {
+            const updatedTasks = [...prevTasks, task];
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks))
+            return updatedTasks;
+        });
     };
 
     const deleteTask = (id: string) => {
-        setTasks(state => state.filter(item => item.id !== id))
-    }
+        setTasks((prevTasks) => {
+            const updatedTasks = prevTasks.filter(item => item.id !== id);
+            localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+            return updatedTasks
+        });
+    };
 
     return (
         <TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
