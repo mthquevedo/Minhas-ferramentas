@@ -1,26 +1,27 @@
+import { useState } from "react";
 import { IoListSharp } from "react-icons/io5";
 import { TaskProps, useToDo } from "../../contexts/task";
 import { ReturnHomeButton } from "../ReturnHomeButton";
 import { ToDoItem } from "../ToDoItem";
+import { GenreEnum } from "../ToDoItem/constants";
 
 export function ToDoListContent() {
     const { tasks, addTask } = useToDo();
 
+    const [option, setOption] = useState<GenreEnum>(GenreEnum.ESTUDO);
+    const [content, setContent] = useState<string>("");
+
     const handleCreateTask = (event: React.FormEvent) => {
         event.preventDefault();
 
-        const taskId = "mq" + Math.random().toString(16).slice(2, 10);
-        const formInputGenre = (document.getElementById('genderOptions') as HTMLSelectElement).value;
-        const formTaskInput = (document.getElementById('taskContent') as HTMLInputElement).value.trim();
+        const id = "mq" + Math.random().toString(16).slice(2, 10);
 
-        if (!formTaskInput) {
+        if (!content) {
             alert("O conteúdo da tarefa não pode estar vazio!");
             return
         }
 
-        const formInputContent = formTaskInput;
-
-        AddTask({ id: taskId, genre: formInputGenre, content: formInputContent });
+        AddTask({ id, genre: option, content });
     }
 
     const AddTask = ({ id, genre, content }: TaskProps) => {
@@ -57,10 +58,14 @@ export function ToDoListContent() {
                             <select
                                 name="genderOptions"
                                 id="genderOptions"
+                                value={option}
+                                onChange={(e) => {
+                                    setOption(e.target.value as GenreEnum)
+                                }}
                                 className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
-                                <option value="Estudo">Estudo</option>
-                                <option value="Trabalho">Trabalho</option>
-                                <option value="Pessoal">Pessoal</option>
+                                {Object.values(GenreEnum).map((value) =>
+                                    <option value={value}>{value}</option>
+                                )}
                             </select>
                         </div>
 
@@ -69,6 +74,10 @@ export function ToDoListContent() {
                             <input
                                 type="text"
                                 id="taskContent"
+                                value={content}
+                                onChange={(e) => {
+                                    setContent(e.target.value)
+                                }}
                                 placeholder="Descreva a tarefa"
                                 className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 focus:outline-none" />
                         </div>
