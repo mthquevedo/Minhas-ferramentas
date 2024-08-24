@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef } from "react";
 import { IoListSharp } from "react-icons/io5";
 import { TaskProps, useToDo } from "../../contexts/task";
 import { ReturnHomeButton } from "../ReturnHomeButton";
@@ -8,28 +8,28 @@ import { GenreEnum } from "../ToDoItem/constants";
 export function ToDoListContent() {
     const { tasks, addTask } = useToDo();
 
-    const [option, setOption] = useState<GenreEnum>(GenreEnum.ESTUDO);
-    const [content, setContent] = useState<string>("");
+    const options = useRef<HTMLSelectElement>(null);
+    const content = useRef<HTMLInputElement>(null);
 
     const handleCreateTask = (event: React.FormEvent) => {
         event.preventDefault();
 
         const id = "mq" + Math.random().toString(16).slice(2, 10);
+        const optionValue = options.current !== null ? options.current.value : "";
+        const contentValue = content.current?.value;
 
-        if (!content) {
+        if (!contentValue) {
             alert("O conteúdo da tarefa não pode estar vazio!");
             return
         }
 
-        AddTask({ id, genre: option, content });
+        AddTask({ id, genre: optionValue, content: contentValue });
     }
 
     const AddTask = ({ id, genre, content }: TaskProps) => {
         addTask({ id: id, genre: genre, content: content });
         clearInputs()
     };
-
-    console.log(tasks);
 
     const clearInputs = () => {
         (document.getElementById('genderOptions') as HTMLSelectElement).selectedIndex = 0;
@@ -58,10 +58,7 @@ export function ToDoListContent() {
                             <select
                                 name="genderOptions"
                                 id="genderOptions"
-                                value={option}
-                                onChange={(e) => {
-                                    setOption(e.target.value as GenreEnum)
-                                }}
+                                ref={options}
                                 className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
                                 {Object.values(GenreEnum).map((value) =>
                                     <option value={value}>{value}</option>
@@ -74,10 +71,7 @@ export function ToDoListContent() {
                             <input
                                 type="text"
                                 id="taskContent"
-                                value={content}
-                                onChange={(e) => {
-                                    setContent(e.target.value)
-                                }}
+                                ref={content}
                                 placeholder="Descreva a tarefa"
                                 className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 focus:outline-none" />
                         </div>
