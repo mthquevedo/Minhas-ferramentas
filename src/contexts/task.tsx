@@ -3,7 +3,7 @@ import { GenreEnum } from "../components/ToDoItem/constants";
 
 export interface TaskProps {
     id: string;
-    genre: GenreEnum;
+    genre: GenreEnum | string;
     content: string;
 }
 
