@@ -4,7 +4,7 @@ import { Header } from "../components/Header";
 export function MainLayout() {
 
     return (
-        <div className=" flex flex-col gap-9 w-100v h-100v bg-gradient-to-b from-gray-50 to-blue-700/20 py-5 px-8">
+        <div className="flex flex-col gap-9 w-100v h-100v bg-gradient-to-b from-gray-50 to-blue-700/20 py-5 px-8 overflow-auto">
             <Header />
 
             <h1 className="text-center font-bold text-neutral-800 text-5xl py-2">✌ Tech Tools</h1>
