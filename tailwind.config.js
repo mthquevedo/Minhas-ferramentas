@@ -7,6 +7,10 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'sm': { 'max': '450px' },
+        'md': { 'max': '767px' },
+      },
       colors: {
         sand: '#fff0d1',
         darkblue: '#131723',
