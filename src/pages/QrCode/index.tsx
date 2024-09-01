@@ -18,7 +18,7 @@ export function QrCode() {
         QRCodeLink.toDataURL(linkUrl, {
             width: 600,
             margin: 3,
-        }, function (err, url) {
+        }, function (_err, url) {
             setQrcodeLink(url);
         })
     }
