@@ -7,15 +7,6 @@ import { GenreEnum } from "./constants";
 export function ToDoItem({ id, genre, content }: TaskProps) {
     const { deleteTask } = useToDo()
 
-    // const genreColor = (genre: string) => {
-    //     if (genre === "Estudo") {
-    //         return "bg-orange-300 text-orange-950 border border-orange-950";
-    //     } else if (genre === "Trabalho") {
-    //         return "bg-indigo-300 text-indigo-950 border border-indigo-950";
-    //     } else {
-    //         return "bg-emerald-300 text-emerald-950 border border-emerald-950";
-    //     }
-    // }
 
     const genreColor = (genre: GenreEnum) => {
         switch (genre) {
@@ -33,7 +24,7 @@ export function ToDoItem({ id, genre, content }: TaskProps) {
     };
 
     return (
-        <div className="bg-zinc-500/50 w-100 px-5 py-1 rounded-lg flex gap-8 items-center my-2">
+        <div className="bg-zinc-500/50 w-100 px-5 sm:px-3 py-1 rounded-lg flex gap-8 sm:gap-2 items-center my-2">
             <input type="checkbox" className="rounded-full w-6 h-6" />
 
             <div className="w-full p-2 text-white overflow-hidden">
