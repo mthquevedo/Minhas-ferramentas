@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useContext, useState } from "react";
-import { GenreEnum } from "../components/ToDoItem/constants";
+import { taskGenreValues } from "../components/ToDoItem/constants";
 
 export interface TaskProps {
     id: string;
-    genre: GenreEnum;
+    genre: taskGenreValues;
     content: string;
 }
 
