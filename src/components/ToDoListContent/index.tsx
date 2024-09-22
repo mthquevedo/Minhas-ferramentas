@@ -60,7 +60,7 @@ export function ToDoListContent() {
                                 id="genderOptions"
                                 ref={options}
                                 defaultValue={"Estudo"}
-                                className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50 sm:text-xs">
+                                className="rounded-lg p-1 pl-1 bg-neutral-500 border border-gray-400 text-gray-50 focus:outline-none">
                                 {Object.values(taskGenre).map((value) => (
                                     <option value={value} key={value}>
                                         {value}
