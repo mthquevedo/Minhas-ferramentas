@@ -27,6 +27,7 @@ export default {
         "35v": "35dvh",
         "40v": "40dvh",
         "50v": "50dvh",
+        "55v": "55dvh",
         "60v": "60dvh",
         "70v": "70dvh",
         "80v": "80dvh",
