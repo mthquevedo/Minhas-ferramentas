@@ -26,7 +26,7 @@ export function ToDoItem({ id, genre, content }: TaskProps) {
         <div className="bg-zinc-500/50 w-100 px-5 sm:px-3 py-1 rounded-lg flex gap-8 sm:gap-2 items-center my-2">
             <input type="checkbox" className="rounded-full w-6 h-6" />
 
-            <div className="w-full p-2 text-white overflow-hidden">
+            <div className="w-full p-2 text-white overflow-hidden sm:text-sm">
                 <p>{content}</p>
             </div>
 

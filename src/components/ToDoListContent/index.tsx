@@ -40,9 +40,9 @@ export function ToDoListContent() {
         <div className="flex-1">
             <ReturnHomeButton />
 
-            <main className="h-5/6 bg-gray-400 flex md:flex-col justify-between items-start mt-7 shadow-lg rounded-lg mx-16 md:mx-1">
+            <main className="h-5/6 bg-gray-400 flex md:flex-col justify-between items-start mt-7 shadow-lg rounded-lg mx-16 md:mx-0">
 
-                <aside className="w-30v md:w-full h-full md:h-55v bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 sm:px-5 py-7 md:pb-1 rounded-l-lg md:rounded-r-lg overflow-hidden">
+                <aside className="w-30v md:w-full h-full md:h-50v sm:min-h-64 bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 sm:px-5 py-7 md:pb-1 rounded-l-lg md:rounded-r-lg overflow-hidden">
                     <form
                         className="flex flex-col justify-center gap-5 sm:gap-3"
                         onSubmit={handleCreateTask}
@@ -60,7 +60,7 @@ export function ToDoListContent() {
                                 id="genderOptions"
                                 ref={options}
                                 defaultValue={"Estudo"}
-                                className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
+                                className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50 sm:text-xs">
                                 {Object.values(taskGenre).map((value) => (
                                     <option value={value} key={value}>
                                         {value}
@@ -76,20 +76,20 @@ export function ToDoListContent() {
                                 id="taskContent"
                                 ref={content}
                                 placeholder="Descreva a tarefa"
-                                className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 focus:outline-none" />
+                                className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 sm:placeholder:text-xs focus:outline-none" />
                         </div>
 
-                        <div className="self-end pt-2 md:pt-0 sm:mb-8">
+                        <div className="self-end pt-2 md:pt-0">
                             <button
                                 type="submit"
-                                className="bg-orange-400 text-orange-950 rounded-lg p-1 mt-2 sm:text-sm font-medium w-28 border-2">
+                                className="bg-orange-400 text-orange-950 rounded-lg sm:rounded-md p-1 mt-2 sm:mt-1 sm:text-xs font-medium w-28 sm:w-20 border-2">
                                 Adicionar
                             </button>
                         </div>
                     </form>
                 </aside>
 
-                <div className="w-80v md:w-full h-full px-8 sm:px-5 py-7 md:py-4 overflow-y-auto">
+                <div className="w-80v md:w-full h-full px-8 sm:px-5 py-7 md:py-3 overflow-y-auto">
                     <p className="font-medium">Tarefas:</p>
                     {tasks.map(task => {
                         return (
