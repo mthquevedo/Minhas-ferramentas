@@ -3,7 +3,7 @@ import { IoListSharp } from "react-icons/io5";
 import { TaskProps, useToDo } from "../../contexts/task";
 import { ReturnHomeButton } from "../ReturnHomeButton";
 import { ToDoItem } from "../ToDoItem";
-import { GenreEnum } from "../ToDoItem/constants";
+import { taskGenre, taskGenreValues } from "../ToDoItem/constants";
 
 export function ToDoListContent() {
     const { tasks, addTask } = useToDo();
@@ -15,7 +15,7 @@ export function ToDoListContent() {
         event.preventDefault();
 
         const id = "mq" + Math.random().toString(16).slice(2, 10);
-        const optionValue = options.current !== null ? options.current.value : "";
+        const optionValue = options.current?.value as taskGenreValues;
         const contentValue = content.current?.value;
 
         if (!contentValue) {
@@ -27,7 +27,7 @@ export function ToDoListContent() {
     }
 
     const AddTask = ({ id, genre, content }: TaskProps) => {
-        addTask({ id: id, genre: genre, content: content });
+        addTask({ id, genre, content });
         clearInputs()
     };
 
@@ -59,10 +59,13 @@ export function ToDoListContent() {
                                 name="genderOptions"
                                 id="genderOptions"
                                 ref={options}
+                                defaultValue={"Estudo"}
                                 className="rounded-lg p-1 cursor-pointer bg-neutral-500 border border-gray-400 text-gray-50">
-                                {Object.values(GenreEnum).map((value) =>
-                                    <option value={value}>{value}</option>
-                                )}
+                                {Object.values(taskGenre).map((value) => (
+                                    <option value={value} key={value}>
+                                        {value}
+                                    </option>
+                                ))}
                             </select>
                         </div>
 
