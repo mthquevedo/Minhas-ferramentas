@@ -23,7 +23,7 @@ export function QrCode() {
         })
     }
 
-    const verifyStateButton = link ? "bg-slate-500 hover:bg-slate-500/80 text-slate-100 border-darkblue" : "bg-zinc-300 text-zinc-500  border-zinc-500"
+    const verifyStateButton = link ? "bg-darkblue hover:bg-darkblue/80 text-slate-100 border-darkblue" : "bg-zinc-500 text-zinc-300  border-zinc-500"
 
     return (
         <main className="flex-1">
