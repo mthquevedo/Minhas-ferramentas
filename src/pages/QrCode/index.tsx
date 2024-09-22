@@ -64,8 +64,7 @@ export function QrCode() {
                     />
                 </div>
             </main>
-            <main className="h-5/6 hidden flex-col justify-center items-center gap-10 md:flex">
-
+            <main className="h-5/6 hidden flex-col justify-center items-center gap-8 md:flex">
                 <div
                     className="bg-white p-5 rounded-lg border-2 border-gray-200"
                 >
@@ -91,7 +90,7 @@ export function QrCode() {
                     >
                         <button
                             disabled={!link}
-                            className={twMerge("flex justify-center items-center gap-1 text-nowrap text-base rounded-md shadow-sm font-medium border py-2 px-5 mt-2 transition", verifyStateButton)}
+                            className={twMerge("flex justify-center items-center gap-1 text-nowrap text-base rounded-md shadow-sm font-medium border py-2 px-5 transition", verifyStateButton)}
 
                         >
                             <HiDownload className="text-lg" />

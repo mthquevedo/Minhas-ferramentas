@@ -5,7 +5,7 @@ import { HomeLink } from "../../components/HomeLink";
 export function Home() {
 
     return (
-        <main className="flex flex-col gap-10 flex-1 justify-center md:justify-start mb-36 md:mb-0 md:mt-4">
+        <main className="flex flex-col flex-1 gap-10 justify-center md:justify-start mb-36 md:mb-0 md:mt-4">
             <p className="text-center">Navegue pelas ferramentas abaixo:</p>
             <div className=" flex md:flex-col flex-wrap justify-center gap-48 md:gap-12 items-center">
                 <HomeLink title="Contador" to="contador" icon={<GoNumber />} iconClassName="text-amber-800" className="bg-sand" />

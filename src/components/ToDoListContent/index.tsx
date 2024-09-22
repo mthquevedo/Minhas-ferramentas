@@ -42,9 +42,9 @@ export function ToDoListContent() {
 
             <main className="h-5/6 bg-gray-400 flex md:flex-col justify-between items-start mt-7 shadow-lg rounded-lg mx-16 md:mx-1">
 
-                <aside className="w-30v md:w-full h-full md:h-60v bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 sm:px-5 py-7 md:pb-1 rounded-l-lg md:rounded-r-lg  overflow-hidden">
+                <aside className="w-30v md:w-full h-full md:h-55v bg-gradient-to-t from-neutral-800 to-neutral-800/70 px-8 sm:px-5 py-7 md:pb-1 rounded-l-lg md:rounded-r-lg overflow-hidden">
                     <form
-                        className="flex flex-col justify-center gap-5"
+                        className="flex flex-col justify-center gap-5 sm:gap-3"
                         onSubmit={handleCreateTask}
                     >
 
@@ -54,7 +54,7 @@ export function ToDoListContent() {
                         </div>
 
                         <div className="flex flex-col">
-                            <label className="text-gray-50 text-sm pb-2">Selecione a categoria:</label>
+                            <label className="text-gray-50 text-sm pb-2 md:pb-1">Selecione a categoria:</label>
                             <select
                                 name="genderOptions"
                                 id="genderOptions"
@@ -70,7 +70,7 @@ export function ToDoListContent() {
                         </div>
 
                         <div className="flex flex-col text-gray-50">
-                            <label className="text-gray-50 text-sm pb-2">Conteúdo:</label>
+                            <label className="text-gray-50 text-sm pb-2 md:pb-1">Conteúdo:</label>
                             <input
                                 type="text"
                                 id="taskContent"
@@ -79,7 +79,7 @@ export function ToDoListContent() {
                                 className="rounded-lg p-1 pl-2 bg-neutral-500 border border-gray-400 text-gray-50 placeholder:text-gray-50 focus:outline-none" />
                         </div>
 
-                        <div className="self-end pt-2 md:pt-0">
+                        <div className="self-end pt-2 md:pt-0 sm:mb-8">
                             <button
                                 type="submit"
                                 className="bg-orange-400 text-orange-950 rounded-lg p-1 mt-2 sm:text-sm font-medium w-28 border-2">
