@@ -2,25 +2,24 @@ import { GoTrash } from "react-icons/go";
 import { useToDo } from "../../contexts/task";
 import { TaskProps } from "../../contexts/task";
 import { twMerge } from "tailwind-merge";
-import { GenreEnum } from "./constants";
+import { taskGenre, taskGenreValues } from "./constants";
 
 export function ToDoItem({ id, genre, content }: TaskProps) {
     const { deleteTask } = useToDo()
 
-
-    const genreColor = (genre: GenreEnum) => {
-        switch (genre) {
-            case GenreEnum.ESTUDO:
-                return "bg-orange-300 text-orange-950 border border-orange-950";
-            case GenreEnum.PESSOAL:
-                return "bg-indigo-300 text-indigo-950 border border-indigo-950";
-            case GenreEnum.TRABALHO:
-                return "bg-emerald-300 text-emerald-950 border border-emerald-950";
-        }
-    };
-
     const handleDeleteTask = (taskId: string) => {
         deleteTask(taskId);
+    };
+
+    const genreColor = (genre: taskGenreValues) => {
+        switch (genre) {
+            case taskGenre.ESTUDO:
+                return "bg-orange-300 text-orange-950 border border-orange-950";
+            case taskGenre.PESSOAL:
+                return "bg-indigo-300 text-indigo-950 border border-indigo-950";
+            case taskGenre.TRABALHO:
+                return "bg-emerald-300 text-emerald-950 border border-emerald-950";
+        }
     };
 
     return (
